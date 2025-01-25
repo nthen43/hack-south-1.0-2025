@@ -57,6 +57,7 @@ const problems = [
     }
 ];
 
+
 function updateBubble() {
     const bubbleLink = document.querySelector('.bubble-link');
     const bubbleName = bubbleLink.querySelector('.name');
