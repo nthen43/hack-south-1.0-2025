@@ -41,7 +41,7 @@ p {
     border-color: black;
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10%;
+    border-radius: 40px;
     margin-top: 60px;
 
     transition: height 0.3s ease-in-out;
@@ -121,6 +121,10 @@ p {
     color: #FF375F;
 }
 
+html {
+    scrollbar-gutter: stable; /* Ensures consistent scrollbar visibility */
+}
+
 .tag-container{
     width: 90%;
     height: 140px;
@@ -128,9 +132,11 @@ p {
 
     position: relative;
     box-shadow: inset 0 0 30px rgba(34, 34, 34, 1);
-    border-radius: 10%;
+    border-radius: 30px;
 
     text-align: center;
+    overflow-y: auto; /* Forces the scrollbar to appear */
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 }
 
 .blur-strong {
