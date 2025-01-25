@@ -8,9 +8,25 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to My Flask App!</h1>
-        <p>This is a simple Flask application with enhanced CSS styling. Explore and enjoy!</p>
-        <p>Learn more about <a href="https://flask.palletsprojects.com/">Flask</a>.</p>
+        <a class="title">We suggest you try this next!</a>
+        <a href="https://leetcode.com/problems/two-sum/description/" class="bubble-link">
+            <div class="bubble">
+                <p class="name">Two Sum</p>
+                <p class="easy">Easy</p>
+            </div>
+        </a>
+
+        <div class="completed-container">
+            <p></p>
+            <p></p>
+        </div>
+
+        <div class="tag-container">
+            <p class="show-tags">Show Topics</p>;
+            <div class="blur-background"> </div>
+        </div>
+
     </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>

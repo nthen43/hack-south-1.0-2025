@@ -1,0 +1,200 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #222222;
+    margin: 0;
+    padding: 0;
+    color: #212529;
+}
+
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+    padding: 60px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    width: 500px;
+    height: 700px;
+    
+    padding: 20px;
+    background-color: #2a2a2a;
+
+    border-color: black;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10%;
+    margin-top: 100px;
+}
+
+.bubble-link {
+    text-decoration: none;
+}
+
+.bubble {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #222222;
+
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+
+
+    user-select: none;
+}
+
+.bubble:hover {
+    transform: scale(1.1);
+}
+
+.bubble:active {
+    transform: scale(1.2);
+    transition: transform 0.05s ease-out;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 500;
+    max-width: 80%;
+    color: white;
+    word-wrap: break-word;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.4;
+    text-overflow: ellipsis;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.easy {
+    padding: 10px;
+    font-size: 20px;
+    color: #00B8A3;
+}
+
+.medium {
+    padding: 10px;
+    font-size: 20px;
+    color: #FFC01E;
+}
+
+.hard {
+    padding: 10px;
+    font-size: 20px;
+    color: #FF375F;
+}
+
+.tag-container{
+    width: 90%;
+    height: 140px;
+    margin-top: 50px;
+
+    position: relative;
+    box-shadow: inset 0 0 30px rgba(34, 34, 34, 1);
+    border-radius: 10%;
+
+    text-align: center;
+}
+
+.blur-strong {
+    filter: blur(10px);
+}
+
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: blur(10px);
+    z-index: -1;
+}
+
+
+.show-tags {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+
+    color: white;
+    background-color: #202020;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.5s ease-out;
+}
+
+.show-tags:hover{
+    background-color: #181818;
+}
+
+.fade-out{
+    opacity: 0;
+}
+
+.topic{
+    padding: 8px 16px;
+    font-size: 12px;
+
+    background-color: #222222;
+
+    /* background-color: #2a2a2a;
+    border-color: #888888;
+    border-style: solid;
+    border-width: 2px; */
+
+    /* box-shadow: 0 0 3px rgba(255, 255, 255, 0.5); */
+
+    color: white;
+    transition: opacity 0.5s ease-in;
+    opacity: 0;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px 5px 0;
+}
+
+.fade-in {
+    opacity: 1; /* Makes the topic visible with fade-in effect */
+}
+/*
+Easy: #00B8A3
+Medium: #FFC01E
+Hard: #FF375F
+*/
+
+.completed-container{
+    
+}
