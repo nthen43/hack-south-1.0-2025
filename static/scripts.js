@@ -149,9 +149,11 @@ function updateBubble() {
     bubbleLink.classList.remove('fade-in');
     bubbleLink.classList.add('fade-out');
 
-    setTimeout(() => {
-        const randomProblem = problems[Math.floor(Math.random() * problems.length)];
+    const randomProblem = problems[Math.floor(Math.random() * problems.length)];
+    topic_container = randomProblem.topics;
 
+    setTimeout(() => {
+        
         bubbleLink.href = randomProblem.link;
         bubbleName.textContent = randomProblem.name;
         bubbleDifficulty.textContent = randomProblem.difficulty;
@@ -163,9 +165,11 @@ function updateBubble() {
         bubbleLink.classList.remove('fade-out');
         bubbleLink.classList.add('fade-in');
 
-        topic_container = randomProblem.topics;
-        refreshTopics();
-    }, 300);   
+        
+        
+    }, 300);
+
+    refreshTopics();
 }
 
 function refreshTopics(){
@@ -188,8 +192,9 @@ function refreshTopics(){
         const showTagsElement = document.createElement('p');
         showTagsElement.classList.add('show-tags');
         showTagsElement.innerText = "Show Topics";
-        tagContainer.appendChild(showTagsElement);
         showTagsElement.classList.add('fade-in');
+        tagContainer.appendChild(showTagsElement);
+        
 
         const blurElement = document.createElement('div');
         blurElement.classList.add('blur-background');
