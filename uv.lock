@@ -1,0 +1,42 @@
+version = 1
+requires-python = ">=3.9"
+resolution-markers = [
+    "python_full_version >= '3.10'",
+    "python_full_version < '3.10'",
+]
+
+[[package]]
+name = "fsrs"
+version = "3.1.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.10'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/b5/a5/78ecd534772be03e805371b5de1ca58e423f29c778088ee08c9d493a2d41/fsrs-3.1.0.tar.gz", hash = "sha256:3106a03f9abf4c76ad9482d237d0539ff701010d18e2cafd8dbb8d49e7fd1044", size = 13000 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/dc/69/83f7a0b9084e37b2714851907253a40309e1433424d2112cc6ff2892798c/fsrs-3.1.0-py3-none-any.whl", hash = "sha256:88c0043f79356b6267bb7f6b80eaa86137aae86ab4f370d963453c638957ddad", size = 10254 },
+]
+
+[[package]]
+name = "fsrs"
+version = "5.0.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.10'",
+]
+sdist = { url = "https://files.pythonhosted.org/packages/5a/27/0dee96e5540c1c8d93a9d3cb336a6b00d299d4acf8aa540768178c1b7a73/fsrs-5.0.0.tar.gz", hash = "sha256:4bf61858ba97fab93cc63a9ebb6a4bb04475fdb4981673402b33377b2e9e4324", size = 21815 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/82/0d/cf260a75b02ac42c26aa9870e6aec148ab4ac22bf6558a8a95e2be6e6eb0/fsrs-5.0.0-py3-none-any.whl", hash = "sha256:b6fbab580fed7ce5b91bb6f78603e441e80572a8f8bd956aa595774380519ad2", size = 15518 },
+]
+
+[[package]]
+name = "hack-south-1-0-2025"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "fsrs", version = "3.1.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.10'" },
+    { name = "fsrs", version = "5.0.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.10'" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "fsrs", specifier = ">=3.1.0" }]
