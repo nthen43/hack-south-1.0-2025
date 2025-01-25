@@ -99,6 +99,9 @@ p {
     margin-top: 20px;
 }
 
+.difficulty {
+    font-weight: 500;
+}
 
 .easy {
     padding: 10px;
