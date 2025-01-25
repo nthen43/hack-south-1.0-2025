@@ -33,7 +33,7 @@ p {
     align-items: center;
     
     width: 500px;
-    height: 700px;
+    height: 800px;
     
     padding: 20px;
     background-color: #2a2a2a;
@@ -63,7 +63,7 @@ p {
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
 
 
     user-select: none;
@@ -117,7 +117,7 @@ p {
 .tag-container{
     width: 90%;
     height: 140px;
-    margin-top: 50px;
+    margin-top: 60px;
 
     position: relative;
     box-shadow: inset 0 0 30px rgba(34, 34, 34, 1);
@@ -155,6 +155,8 @@ p {
     cursor: pointer;
     z-index: 10;
     transition: opacity 0.5s ease-out;
+
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
 }
 
 .show-tags:hover{
@@ -196,5 +198,42 @@ Hard: #FF375F
 */
 
 .completed-container{
+    margin-top: 40px;
+    flex-direction: row;
+    display: flex;
+}
+
+.tick, .x {
+    font-size: 16px;
+    padding: 10px 30px;
+    background: #202020;
+    color: white;
+    border-radius: 5px;
+
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
     
+    user-select: none;
+    cursor: pointer;
+}
+
+.x {
+    margin-right: 10px;
+}
+
+.tick:hover {
+    transform: scale(1.05);
+}
+
+.tick:active {
+    transform: scale(1.1);
+    transition: transform 0.05s ease-out;
+}
+
+.x:hover {
+    transform: scale(1.05);
+}
+
+.x:active {
+    transform: scale(1.1);
+    transition: transform 0.05s ease-out;
 }

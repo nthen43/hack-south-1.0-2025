@@ -27,7 +27,10 @@ document.querySelector('.show-tags').addEventListener('click', function() {
     
 });
 
+document.querySelector('.x').addEventListener('click', function() {
+    console.log('Skip clicked');
+});
 
-function populateTags(array){
-
-}
+document.querySelector('.tick').addEventListener('click', function() {
+    console.log('Done clicked');
+});
