@@ -1,10 +1,7 @@
-let topic_container = ["Array", "Hashing"];
 
-document.querySelector('.show-tags').addEventListener('click', function() {
-    const topics = topic_container;
-    displayTopics(topics);
-});
-
+//Takes in array of topics
+//["Array", "Hashing"];
+//if empty will show no tags found
 function displayTopics(topics) {
     const tagContainer = document.querySelector('.tag-container');
     const button = document.querySelector('.show-tags');
@@ -16,6 +13,14 @@ function displayTopics(topics) {
 
     setTimeout(function() {
         tagContainer.innerHTML = '';
+
+        if(topics.length === 0){
+            const topicElement = document.createElement('a');
+            topicElement.classList.add('topic');
+            topicElement.textContent = "No Topics Found";
+            tagContainer.appendChild(topicElement);
+            topicElement.classList.add('fade-in');
+        }
 
         topics.forEach(function(topic, index) {
             const topicElement = document.createElement('a');
@@ -30,118 +35,18 @@ function displayTopics(topics) {
     }, 700);
 }
 
-const problems = [
-    {
-        name: "Two Sum",
-        link: "https://leetcode.com/problems/two-sum/description/",
-        difficulty: "Easy",
-        topics: ["Array", "Hashing"]
-    },
-    {
-        name: "Add Two Numbers",
-        link: "https://leetcode.com/problems/add-two-numbers/description/",
-        difficulty: "Medium",
-        topics: ["Linked List", "Math"]
-    },
-    {
-        name: "Longest Substring Without Repeating Characters",
-        link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/description/",
-        difficulty: "Hard",
-        topics: ["Sliding Window", "Hashing"]
-    },
-    {
-        name: "Valid Parentheses",
-        link: "https://leetcode.com/problems/valid-parentheses/description/",
-        difficulty: "Medium",
-        topics: ["Stack", "String"]
-    },
-    {
-        name: "Merge Intervals",
-        link: "https://leetcode.com/problems/merge-intervals/description/",
-        difficulty: "Medium",
-        topics: ["Array", "Sorting", "Greedy"]
-    },
-    {
-        name: "Best Time to Buy and Sell Stock",
-        link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/",
-        difficulty: "Easy",
-        topics: ["Array", "Dynamic Programming"]
-    },
-    {
-        name: "Reverse Linked List",
-        link: "https://leetcode.com/problems/reverse-linked-list/description/",
-        difficulty: "Easy",
-        topics: ["Linked List", "Recursion"]
-    },
-    {
-        name: "Climbing Stairs",
-        link: "https://leetcode.com/problems/climbing-stairs/description/",
-        difficulty: "Easy",
-        topics: ["Dynamic Programming"]
-    },
-    {
-        name: "Word Ladder",
-        link: "https://leetcode.com/problems/word-ladder/description/",
-        difficulty: "Hard",
-        topics: ["Breadth-First Search", "Graph"]
-    },
-    {
-        name: "Binary Tree Level Order Traversal",
-        link: "https://leetcode.com/problems/binary-tree-level-order-traversal/description/",
-        difficulty: "Medium",
-        topics: ["Tree", "Breadth-First Search"]
-    },
-    {
-        name: "Longest Palindromic Substring",
-        link: "https://leetcode.com/problems/longest-palindromic-substring/description/",
-        difficulty: "Medium",
-        topics: ["Dynamic Programming", "String"]
-    },
-    {
-        name: "Find Median from Data Stream",
-        link: "https://leetcode.com/problems/find-median-from-data-stream/description/",
-        difficulty: "Hard",
-        topics: ["Heap", "Design"]
-    },
-    {
-        name: "Trapping Rain Water",
-        link: "https://leetcode.com/problems/trapping-rain-water/description/",
-        difficulty: "Hard",
-        topics: ["Array", "Two Pointers", "Dynamic Programming"]
-    },
-    {
-        name: "Maximum Subarray",
-        link: "https://leetcode.com/problems/maximum-subarray/description/",
-        difficulty: "Easy",
-        topics: ["Array", "Dynamic Programming"]
-    },
-    {
-        name: "Jump Game II",
-        link: "https://leetcode.com/problems/jump-game-ii/description/",
-        difficulty: "Medium",
-        topics: ["Greedy", "Dynamic Programming"]
-    },
-    {
-        name: "Median of Two Sorted Arrays",
-        link: "https://leetcode.com/problems/median-of-two-sorted-arrays/description/",
-        difficulty: "Hard",
-        topics: ["Array", "Binary Search"]
-    },
-    {
-        name: "Course Schedule",
-        link: "https://leetcode.com/problems/course-schedule/description/",
-        difficulty: "Medium",
-        topics: ["Graph", "Topological Sort"]
-    },
-    {
-        name: "Kth Largest Element in an Array",
-        link: "https://leetcode.com/problems/kth-largest-element-in-an-array/description/",
-        difficulty: "Medium",
-        topics: ["Array", "Sorting", "Heap"]
-    }
+const errorProblem =     
+[{
+    name: "Error Finding Problem",
+    link: "#",
+    difficulty: "Error",
+    topics: []
+}
 ];
+let topic_container = [];
+let problem_container = [];
 
-function updateBubble() {
+async function updateBubble() {
     const bubbleLink = document.querySelector('.bubble-link');
     const bubbleName = bubbleLink.querySelector('.name');
     const bubbleDifficulty = bubbleLink.querySelector('.difficulty');
@@ -149,26 +54,54 @@ function updateBubble() {
     bubbleLink.classList.remove('fade-in');
     bubbleLink.classList.add('fade-out');
 
-    const randomProblem = problems[Math.floor(Math.random() * problems.length)];
-    topic_container = randomProblem.topics;
+    // Timeout function to reject after a specified time
+    function timeout(ms) {
+        return new Promise((_, reject) => setTimeout(() => reject('Timeout'), ms));
+    }
 
+    // Modify getRandomProblem to wait for a response or timeout
+    async function fetchRandomProblemWithTimeout() {
+        const timeoutDuration = 5000; // Set timeout duration (e.g., 5000 ms = 5 seconds)
+
+        try {
+            const problemPromise = getRandomProblem();  // API call
+            const problems = await Promise.race([problemPromise, timeout(timeoutDuration)]);  // Wait for either the response or timeout
+            return problems;
+        } catch (error) {
+            console.error('Error or Timeout:', error);
+            return []; // Return empty array in case of error or timeout
+        }
+    }
+
+    // Fetch the random problem or handle timeout
+    const problems = await fetchRandomProblemWithTimeout();
+
+    let randomProblem = errorProblem[0]; // Default to error problem if no valid data
+    if (problems.length > 0) {
+        console.log('Fetched random problem(s):', problems);
+        problem_container = problems;  // Assign problems
+        randomProblem = problem_container[Math.floor(Math.random() * problem_container.length)];  // Randomly pick a problem
+    } else {
+        console.log('Failed to fetch random problem.');
+    }
+
+    topic_container = randomProblem.topics;  // Assign topics from the selected problem
+
+    // Updates the main bubble
     setTimeout(() => {
-        
         bubbleLink.href = randomProblem.link;
         bubbleName.textContent = randomProblem.name;
         bubbleDifficulty.textContent = randomProblem.difficulty;
 
-        bubbleDifficulty.classList.remove('easy', 'medium', 'hard');
+        bubbleDifficulty.classList.remove('easy', 'medium', 'hard', 'error');
         const difficultyClass = randomProblem.difficulty.toLowerCase();
         bubbleDifficulty.classList.add(difficultyClass);
 
         bubbleLink.classList.remove('fade-out');
         bubbleLink.classList.add('fade-in');
-
-        
-        
     }, 300);
 
+    // Updates the topic list to match that from the bubble
     refreshTopics();
 }
 
@@ -208,8 +141,35 @@ function refreshTopics(){
     }, 300)
 }
 
-{/* <p class="show-tags">Show Topics</p>
-<div class="blur-background"> </div> */}
+function getRandomProblem() {
+    return new Promise((resolve, reject) => {
+        fetch('/random-problem')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch random problem');
+                }
+                return response.json();
+            })
+            .then(data => {
+                resolve(data);
+            })
+            .catch(error => {
+                console.error('Error fetching random problem:', error);
+                resolve([]);
+            });
+    });
+}
+
+document.querySelector('.show-tags').addEventListener('click', function() {
+    const topics = topic_container;
+    displayTopics(topics);
+});
 
 document.querySelector('.x').addEventListener('click', updateBubble);
 document.querySelector('.tick').addEventListener('click', updateBubble);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const bubbleElement = document.querySelector('.bubble');
+    bubbleElement.classList.remove('pulse-opacity');
+    updateBubble();
+});

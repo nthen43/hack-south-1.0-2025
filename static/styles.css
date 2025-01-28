@@ -121,6 +121,12 @@ p {
     color: #FF375F;
 }
 
+.error {
+    padding: 10px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
 html {
     scrollbar-gutter: stable; /* Ensures consistent scrollbar visibility */
 }
@@ -270,4 +276,20 @@ Hard: #FF375F
     transition: opacity 0.5s ease-out;
 
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.pulse-opacity {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
 }
